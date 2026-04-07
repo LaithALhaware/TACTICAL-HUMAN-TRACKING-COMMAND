@@ -25,8 +25,8 @@ A tactical system designed for human tracking, monitoring, and command operation
 ## 🚀 Installation
 
 ```bash
-git clone https://github.com/your-username/tactical-human-tracking-command.git
-cd tactical-human-tracking-command
+git clone https://github.com/LaithALhaware/TACTICAL-HUMAN-TRACKING-COMMAND.git
+cd TACTICAL-HUMAN-TRACKING-COMMAND
 pip install -r requirements.txt
 python app.py
 ```
