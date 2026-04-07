@@ -1,1 +1,10 @@
-requirements.txt
+Flask
+flask-cors
+requests
+websockets
+netifaces
+psutil
+scapy
+mac-vendor-lookup
+python-nmap
+reportlab
