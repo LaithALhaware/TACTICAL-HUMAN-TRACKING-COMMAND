@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AI Tracking SaaS</title>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128/examples/js/controls/OrbitControls.js"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<header>
+    <h1>TACTICAL HUMAN TRACKING COMMAND</h1>
+
+    <div class="status-indicator">
+        <div class="status-pill">STATUS: ACTIVE</div>
+        <div class="status-pill">ROOM: <span id="currentRoomLabel">ROOM1</span></div>
+    </div>
+</header>
+
+<div class="dashboard">
+
+    <div class="sidebar">
+        <div class="nav-item active">SURVEILLANCE</div>
+        <div class="nav-item">ANALYTICS</div>
+        <div class="nav-item">MULTI-ROOM</div>
+        <div class="nav-item">REPORT EXPORT</div>
+    </div>
+
+    <div class="main-view" style="filter: url();">
+        <div id="viewButtons" style="position:absolute; top:10px; right:10px; z-index:10;">
+    <button class="btn22" onclick="setCameraView('top')">Top View</button>
+    <button class="btn22" onclick="setCameraView('left')">Left View</button>
+    <button class="btn22" onclick="setCameraView('right')">Right View</button>
+    <button class="btn22" onclick="setCameraView('front')">Front View</button>
+    <button class="btn22" onclick="setCameraView('default')">Default</button>
+</div>
+        <div id="3d-view"></div>
+    </div>
+
+<div class="right-panel">
+
+    <div class="card">
+        <h3>ROOM CONTROL</h3>
+        <button class="btn" onclick="saveSession()">SAVE LOG</button>
+        <button class="btn" onclick="exportPDF()">EXPORT REPORT</button>
+    </div>
+
+
+
+
+    <!-- NEW CARD FOR VITAL SIGNS -->
+    <div class="card" id="vitalSignsCard">
+        <h3>VITAL SIGNS</h3>
+        <p style="font-size: 13px;"><span id="breathingRate">--</span> bpm</p>
+        <p style="font-size: 13px;"><span id="breathingConfidence">--</span></p>
+        <p style="font-size: 13px;"><span id="heartRate">--</span> bpm</p>
+        <p style="font-size: 13px;"><span id="heartbeatConfidence">--</span></p>
+        <p style="font-size: 13px;"><span id="signalQuality">--</span></p>
+    </div>
+
+    <div class="card">
+  <h3>Signal Features</h3>
+  <p style="font-size: 13px;" id="variance"></p>
+  <p style="font-size: 13px;" id="motion"></p>
+  <p style="font-size: 13px;" id="breathing"></p>
+  <p style="font-size: 13px;" id="spectral"></p>
+  <p style="font-size: 13px;" id="dominantFreq"></p>
+  <p style="font-size: 13px;" id="changePoints"></p>
+  <p style="font-size: 13px;" id="meanRssi"></p>
+
+    </div>
+
+</div>
+
+
+
+</div>
+
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+<script src="{{ url_for('static', filename='theme.js') }}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,169 @@
+:root {
+    --bg-primary: #0a0f0d;
+    --bg-panel: #111715;
+    --bg-elevated: #161d1a;
+
+    --accent-green: #00ff9d;
+    --accent-green-soft: rgba(0,255,157,0.15);
+
+    --warning: #ffb020;
+    --danger: #ff3b3b;
+
+    --text-main: #c7d2cc;
+    --text-dim: #6b7a73;
+
+    --border: rgba(0,255,157,0.15);
+}
+
+body {
+    margin: 0;
+    background: var(--bg-primary);
+    color: var(--text-main);
+    font-family: "Consolas", "Courier New", monospace;
+    overflow: hidden;
+}
+
+/* ===== GLOBAL GRID OVERLAY ===== */
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background-image:
+        linear-gradient(rgba(0,255,157,0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,255,157,0.05) 1px, transparent 1px);
+    background-size: 40px 40px;
+    pointer-events: none;
+}
+
+/* ===== HEADER ===== */
+
+header {
+    height: 70px;
+    background: var(--bg-panel);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 30px;
+    border-bottom: 1px solid var(--border);
+    letter-spacing: 2px;
+}
+
+header h1 {
+    font-size: 16px;
+    text-transform: uppercase;
+    color: var(--accent-green);
+}
+
+.status-indicator {
+    display: flex;
+    gap: 20px;
+}
+
+.status-pill {
+    padding: 6px 14px;
+    border: 1px solid var(--border);
+    background: var(--accent-green-soft);
+    font-size: 12px;
+}
+
+/* ===== LAYOUT ===== */
+
+.dashboard {
+    display: grid;
+    grid-template-columns: 260px calc(100% - 600px) 340px;
+    height: calc(100vh - 70px);
+}
+
+/* ===== SIDEBAR ===== */
+
+.sidebar {
+    background: var(--bg-panel);
+    padding: 20px;
+    border-right: 1px solid var(--border);
+}
+
+.nav-item {
+    padding: 12px;
+    margin-bottom: 8px;
+    border: 1px solid transparent;
+    cursor: pointer;
+    transition: 0.2s;
+    font-size: 13px;
+}
+
+.nav-item:hover {
+    border: 1px solid var(--accent-green);
+    background: var(--accent-green-soft);
+}
+
+.nav-item.active {
+    border: 1px solid var(--accent-green);
+}
+
+/* ===== MAIN VIEW ===== */
+.btn22 {
+background: transparent;
+    border: 1px solid var(--accent-green);
+    color: var(--accent-green);
+    cursor: pointer;
+}
+
+#3d-view {
+    width: 100%;
+    height: 100%;
+    border: 1px solid var(--border);
+}
+
+/* ===== RIGHT PANEL ===== */
+
+.right-panel {
+    background: var(--bg-panel);
+    border-left: 1px solid var(--border);
+    padding: 20px;
+    overflow-y: auto;
+}
+
+/* ===== PANEL CARDS ===== */
+
+.card {
+    background: var(--bg-elevated);
+    border: 1px solid var(--border);
+    padding: 15px;
+    margin-bottom: 20px;
+}
+
+.card h3 {
+    margin-top: 0;
+    font-size: 14px;
+    text-transform: uppercase;
+    color: var(--accent-green);
+}
+
+/* ===== BUTTONS ===== */
+
+.btn {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    background: transparent;
+    border: 1px solid var(--accent-green);
+    color: var(--accent-green);
+    cursor: pointer;
+    text-transform: uppercase;
+    font-size: 12px;
+}
+
+.btn:hover {
+    background: var(--accent-green-soft);
+}
+
+/* ===== ALERTS ===== */
+
+.alert-critical {
+    color: var(--danger);
+}
+
+.alert-warning {
+    color: var(--warning);
+}

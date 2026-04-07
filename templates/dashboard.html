@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Network Monitor</title>
+    <script>
+        async function loadData(){
+            const res = await fetch("/api/status");
+            const data = await res.json();
+
+            document.getElementById("ip").innerText = data.public_ip;
+            document.getElementById("geo").innerText =
+                data.geo.country + " - " + data.geo.city + " (" + data.geo.isp + ")";
+
+            let devices = "";
+            for (let mac in data.devices){
+                devices += "<li>" + mac + " - " + data.devices[mac] + "</li>";
+            }
+            document.getElementById("devices").innerHTML = devices;
+
+            let alerts = "";
+            data.alerts.forEach(a => {
+                alerts += "<li>" + a + "</li>";
+            });
+            document.getElementById("alerts").innerHTML = alerts;
+        }
+
+        setInterval(loadData, 5000);
+        window.onload = loadData;
+    </script>
+</head>
+<body>
+    <h1>🖥 Network Dashboard</h1>
+
+    <h3>🌍 Public IP</h3>
+    <p id="ip"></p>
+    <p id="geo"></p>
+
+    <h3>📡 Devices</h3>
+    <ul id="devices"></ul>
+
+    <h3>🚨 Alerts</h3>
+    <ul id="alerts"></ul>
+</body>
+</html>
